@@ -1,1 +1,1 @@
-python3 /home/thegeekylad/Playground/suspend-git-hook/suspend-git-hook.py
+python3 /home/thegeekylad/Projects/py-crestfallen-git/crestfallen-git.py

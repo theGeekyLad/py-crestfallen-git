@@ -6,9 +6,9 @@ import os
 
 # constants
 gitProjectsList = [
-    '/home/thegeekylad/Projects/open-source/opsdroid-desktop',
-    '/home/thegeekylad/Projects/open-source/S2TDroid',
-    '/home/thegeekylad/Projects/traders-toolkit'
+    '/home/thegeekylad/Projects/traders-toolkit',
+    '/home/thegeekylad/Projects/hackoberfest20/GreenLight',
+    '/home/thegeekylad/Projects/hackoberfest20/Java-A-Z'
 ]
 
 projectCount = 0
@@ -28,7 +28,8 @@ if projectCount > 0:
         '--no-wrap',
         '--title=Git is worried :(',
         '--text=There are uncommitted changes across <b>' + str(projectCount) + ' projects</b>.\n\nA stitch in time saves nine. Considering committing\nand pushing your changes first.\n\n<i>Suspending in 10s anyway...</i>',        
-        '--extra-button=Omg! Cancel suspend'
+        '--extra-button=Omg! Cancel suspend',
+        '--timeout=10'
     ], stdout=subprocess.PIPE)
     exitValue = dialogProc.stdout.decode('UTF-8').strip()
     if len(exitValue) > 0:
