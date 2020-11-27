@@ -20,7 +20,10 @@ Execute a scan on all registered Git projects after a suspend is initiated and b
   - Hook into ACPI events
   - Most people hit the power button to sleep on docked computers
   - GNOME Shell extension is on the way for replacing system suspend
-  - _Why use `runuser`?_
+- ```
+  who
+  thegeekylad :0           2020-11-27 10:58 (:0)
+  ```
 
 ## Further Reading
 
