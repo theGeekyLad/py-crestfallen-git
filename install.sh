@@ -10,10 +10,13 @@ sudo mkdir $project_dir
 sudo cp ./crestfallen-git.py ./crestfallen-git.sh ./README.md $project_dir
 
 # setup config file for xauthority dump
+echo "[*] Backing up .bash_profile --> .bash_profile.bkp ..."
+cp /home/$(whoami)/.bash_profile /home/$(whoami)/.bash_profile.bkp
+echo "[*] Patching .bash_profile to cache \$XAUTHORITY ..."
 echo "echo \$XAUTHORITY > .config-cresfallen-git" >> "/home/$(whoami)/.bash_profile"
 
 # backup handler.sh
-echo "[*] Backing up existing /etc/acpi/handler.sh --> /etc/acpi/hander.sh.bkp ..."
+echo "[*] Backing up /etc/acpi/handler.sh --> /etc/acpi/hander.sh.bkp ..."
 sudo cp /etc/acpi/handler.sh /etc/acpi/handler.sh.bkp
 
 # patch handler.sh
