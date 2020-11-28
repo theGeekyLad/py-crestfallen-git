@@ -2,10 +2,17 @@ echo "----------------------------------------------"
 echo "Crestfallen Git Installer"
 echo "----------------------------------------------"
 
+# vars
+project_dir=/opt/py-crestfallen-git
+me=$(whoami)
+
 # initializing project dir
-echo "[*] Copying project files to /opt/crestfallen-git ..."
-sudo rm -rf /opt/crestfallen-git
-project_dir=/opt/crestfallen-git
+echo "[*] Setting up config directory as ~/.config/py-crestfallen-git ..."
+mkdir /home/$(whoami)/.config /home/$(whoami)/.config/py-crestfallen-git
+echo $XAUTHORITY > /home/$(whoami)/.config/py-crestfallen-git/xauth-cred
+touch /home/$(whoami)/.config/py-crestfallen-git/projects
+echo "[*] Copying project files to $project_dir ..."
+sudo rm -rf $project_dir
 sudo mkdir $project_dir
 sudo cp ./crestfallen-git.py ./crestfallen-git.sh ./README.md $project_dir
 
@@ -13,7 +20,7 @@ sudo cp ./crestfallen-git.py ./crestfallen-git.sh ./README.md $project_dir
 echo "[*] Backing up .bash_profile --> .bash_profile.bkp ..."
 cp /home/$(whoami)/.bash_profile /home/$(whoami)/.bash_profile.bkp
 echo "[*] Patching .bash_profile to cache \$XAUTHORITY ..."
-echo "echo \$XAUTHORITY > .config-cresfallen-git" >> "/home/$(whoami)/.bash_profile"
+echo "echo \$XAUTHORITY > /home/$(whoami)/.config/cresfallen-git/xauth-cred" >> "/home/$(whoami)/.bash_profile"
 
 # backup handler.sh
 echo "[*] Backing up /etc/acpi/handler.sh --> /etc/acpi/hander.sh.bkp ..."
@@ -32,7 +39,7 @@ do
 done < "$input"
 c=$((c+1))
 echo "[*] Patching /etc/acpi/handler.sh to intercept power button press ..."
-sudo sed -i $c' i\                '$project_dir'/crestfallen-git.sh' /etc/acpi/handler.sh
+sudo sed -i $c' i\                '$project_dir'/crestfallen-git.sh '$me /etc/acpi/handler.sh
 
 # restart acpid
 echo "[*] Restarting acpid.service ..."

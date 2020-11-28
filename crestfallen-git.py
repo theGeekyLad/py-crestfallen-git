@@ -4,12 +4,11 @@ from pathlib import Path
 import subprocess
 import os
 
-# constants
-gitProjectsList = [
-    '/home/thegeekylad/Projects/traders-toolkit',
-    '/home/thegeekylad/Projects/hackoberfest20/GreenLight',
-    '/home/thegeekylad/Projects/hackoberfest20/Java-A-Z'
-]
+# getting projects
+gitProjectsList = []
+projects_file = open(str(Path.home()) + "/.config/py-crestfallen-git/projects", "r")
+for line in projects_file:
+    gitProjectsList.append(line.strip())
 
 projectCount = 0
 for path in gitProjectsList:

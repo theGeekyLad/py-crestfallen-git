@@ -1,7 +1,7 @@
 # DO THIS INSIDE .bash_profile
 # echo $XAUTHORITY > cresfallen-git-xauthority
 
-shouldSuspend=$(XAUTHORITY=$(cat /home/thegeekylad/.config-cresfallen-git) DISPLAY=":0" python3 /home/thegeekylad/Projects/py-crestfallen-git/crestfallen-git.py)
+shouldSuspend=$(XAUTHORITY=$(cat /home/$1/.config/py-cresfallen-git/xauth-cred) DISPLAY=":0" runuser $1 -c "python3 /opt/py-crestfallen-git/crestfallen-git.py")
 if [ -z "$shouldSuspend" ];
 then
         echo 'Suspending...'
