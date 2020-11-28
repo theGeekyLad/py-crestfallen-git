@@ -4,6 +4,8 @@ That right! Git is upset that you'd put your system to sleep without committing 
 
 Well! Once bitten twice shy and here's a nifty little tool for help. :rocket:
 
+![Screenshot](https://github.com/theGeekyLad/py-crestfallen-git/blob/master/demo-screenshot.png)
+
 ## What's required? :pencil:
 
 - **Linux**! Should work across distros but I've tested it for success on my Arch machine
