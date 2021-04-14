@@ -11,6 +11,7 @@ for line in projects_file:
     gitProjectsList.append(line.strip())
 
 projectCount = 0
+projects = ''
 for path in gitProjectsList:
     os.chdir(path)
     proc = subprocess.run(['git', 'status'], stdout=subprocess.PIPE)
@@ -19,6 +20,7 @@ for path in gitProjectsList:
     gitStatus = sArr[len(sArr) - 1]
     if 'working tree clean' not in gitStatus:
         projectCount += 1
+        projects += str(projectCount) + '. ' + path[path.rindex('/') + 1 if path.rindex('/') != -1 else 0 : ] + '\n'
 
 if projectCount > 0:
     dialogProc = subprocess.run([
@@ -26,7 +28,7 @@ if projectCount > 0:
         '--info',
         '--no-wrap',
         '--title=Git is worried :(',
-        '--text=There are uncommitted changes across <b>' + str(projectCount) + ' projects</b>.\n\nA stitch in time saves nine. Considering committing\nand pushing your changes first.\n\n<i>Suspending in 10s anyway...</i>',        
+        '--text=There are uncommitted changes across <b>' + str(projectCount) + ' projects</b>:\n' + projects + '\n\nA stitch in time saves nine. Considering committing\nand pushing your changes first.\n\n<i>Suspending in 10s anyway...</i>',        
         '--extra-button=Omg! Cancel suspend',
         '--timeout=10'
     ], stdout=subprocess.PIPE)
