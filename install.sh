@@ -20,7 +20,7 @@ sudo cp ./crestfallen-git.py ./crestfallen-git.sh ./README.md $project_dir
 echo "[*] Backing up .bash_profile --> .bash_profile.bkp ..."
 cp /home/$(whoami)/.bash_profile /home/$(whoami)/.bash_profile.bkp
 echo "[*] Patching .bash_profile to cache \$XAUTHORITY ..."
-echo "echo \$XAUTHORITY > /home/$(whoami)/.config/cresfallen-git/xauth-cred" >> "/home/$(whoami)/.bash_profile"
+echo "echo \$XAUTHORITY > /home/$(whoami)/.config/py-crestfallen-git/xauth-cred" >> "/home/$(whoami)/.bash_profile"
 
 # backup handler.sh
 echo "[*] Backing up /etc/acpi/handler.sh --> /etc/acpi/hander.sh.bkp ..."
